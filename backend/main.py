@@ -23,11 +23,11 @@ app.add_middleware(
 @app.get("/")
 async def root(lon: float, lat: float, range: float = 0.25):
     api = OpenSkyApi(username = OPENSKY_USER, password = OPENSKY_PASSWORD)
-    xmin = lat - range
-    xmax = lat + range
-    ymin = lon - range
-    ymax = lon + range
-    res = api.get_states(bbox=(xmin, xmax, ymin, ymax))
+    ymin = lat - range
+    ymax = lat + range
+    xmin = lon - range
+    xmax = lon + range
+    res = api.get_states(bbox=(ymin, ymax, xmin, xmax))
     if res is not None:
         return res.states
     return None
