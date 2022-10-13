@@ -12,7 +12,7 @@ Get list of airplanes in your area
 - [ ] make frontend look nicer
 - [ ] deploy to prod
 - [ ] get information on plane origin, destination
-- [ ] allow user to mainuplate query params (altitude, x/y range)
+- [ ] allow user to manipulate query params (altitude, x/y range)
 - [ ] get information about aircraft
 - [ ] allow user to save data (planes viewed, etc.)
     - [ ] setup PG database
