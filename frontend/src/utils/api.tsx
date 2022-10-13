@@ -20,8 +20,17 @@ export type Plane = {
     position_source: number
 }
 
-export const getPlanes = async (): Promise<Array<Plane>> => {
-    const response  = await fetch('http://localhost:8000/?lon=-75&lat=40&range=0.25');
+export const getPlanes = async (lat: number, lon: number): Promise<Array<Plane>> => {
+    const Params = new URLSearchParams({
+        lat: lat.toString(),
+        lon: lon.toString()
+    }).toString()
+
+    const response  = await fetch('http://localhost:8000/?' + Params, {
+        method: 'GET',
+
+    }
+    );
     const data = await response.json()
     if (data) {
         return data
