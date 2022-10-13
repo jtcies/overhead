@@ -10,6 +10,7 @@ Get list of airplanes in your area
 
 ### Todo
 - [ ] make frontend look nicer
+- [ ] deploy to prod
 - [ ] get information on plane origin, destination
 - [ ] get information about aircraft
 - [ ] allow user to save data (planes viewed, etc.)
