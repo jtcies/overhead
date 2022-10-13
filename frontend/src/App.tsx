@@ -1,6 +1,7 @@
-import React, { FC, useState, Component } from 'react';
+import React, { useState, Component } from 'react';
 import { getPlanes, Plane} from './utils/api';
 import { useGeolocated } from "react-geolocated";
+import "./styles/global.css";
 
 function App() {
   const [planes, setPlanes] = useState<Array<Plane>>();
@@ -15,9 +16,8 @@ function App() {
     });
     
   const queryBackend = async () => {
-
     try {
-      const planes = await getPlanes(coords?.latitude ?? 40, coords?.longitude ?? -75);
+      const planes = await getPlanes(coords?.latitude ?? 0, coords?.longitude ?? 0);
       console.log(planes)
       setPlanes(planes);
     } catch (err) {
@@ -28,7 +28,7 @@ function App() {
   return (
     <>
       {!planes && !error && isGeolocationEnabled && (
-        <a href="#" onClick={() => queryBackend()}>
+        <a className = 'text-3xl font-bold underline' href="#" onClick={() => queryBackend()}>
           Click to make request
         </a>
       )}
@@ -38,7 +38,7 @@ function App() {
       {planes && (
         <ul>
           {planes.map((plane) =>
-            <li key = {plane.icao24}> {plane.callsign }</li>
+            <li className = "text-center" key = { plane.icao24 }> { plane.callsign }, { plane.on_ground.toString() } </li>
           )}
         </ul>
           
