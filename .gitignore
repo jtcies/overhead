@@ -1,3 +1,4 @@
 backend/opt
 .env
 *.pyc
+backend/.python-version
