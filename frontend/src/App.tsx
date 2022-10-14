@@ -60,7 +60,10 @@ function App() {
           <tbody>
             {planes.map((plane) =>
               <tr key = { plane.icao24 } className='text-lg'> 
-                <td className='pl-3'><a href={'https://flightaware.com/live/flight/' + plane.callsign} target="_blank" rel="noopener noreferrer">{ plane.callsign }</a></td>
+                <td className='pl-3 underline'>
+                  <a href={'https://flightaware.com/live/flight/' + plane.callsign} target="_blank" rel="noopener noreferrer">{ plane.callsign }
+                  </a>
+                </td>
                 <td className='pr-3 text-right'>{ `${Math.round(plane.geo_altitude)} m`} </td>
                 <td className='pr-3 text-right'>{ `${Math.round(plane.velocity)} m/s`} </td> 
                 <td className='pr-3 text-right'>{`${Math.round(plane.vertical_rate)} m/s`}</td> 

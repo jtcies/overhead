@@ -21,6 +21,9 @@ export type Plane = {
 }
 
 export const getPlanes = async (lat: number, lon: number): Promise<Array<Plane>> => {
+    if (lat == undefined) {
+        return Promise.reject('Geolocation not available')
+    }
     const Params = new URLSearchParams({
         lat: lat.toString(),
         lon: lon.toString()
