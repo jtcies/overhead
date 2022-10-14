@@ -1,23 +1,36 @@
 import React, { useState, Component } from 'react';
 import { getPlanes, Plane} from './utils/api';
-import { useGeolocated } from "react-geolocated";
 import "./styles/global.css";
 
 function App() {
   const [planes, setPlanes] = useState<Array<Plane>>();
   const [error, setError] = useState('');
+  const [lat, setLat] = useState<number | any>();
+  const [lon, setLong] = useState<number | any>();
+  const geolocationAPI = navigator.geolocation;
+  
+  const getUserCoordinates = async () => {
+    if (!geolocationAPI) {
+      setError('Geolocation API is not available in your browser!')
+    } else {
+      geolocationAPI.getCurrentPosition((position) => {
+        const { coords } = position;
+        setLat(coords.latitude);
+        setLong(coords.longitude);
+      }, (error) => {
+        setError('Something went wrong getting your position!')
+      })
+    }
+  }
+ 
+  getUserCoordinates();
 
-  const { coords, isGeolocationAvailable, isGeolocationEnabled } =
-    useGeolocated({
-        positionOptions: {
-            enableHighAccuracy: false,
-        },
-        userDecisionTimeout: 5000,
-    });
-    
   const queryBackend = async () => {
+    if (lat === undefined) {
+      setError('Geolocation not available')
+    }
     try {
-      const planes = await getPlanes(coords?.latitude ?? 0, coords?.longitude ?? 0);
+      const planes = await getPlanes(lat, lon);
       console.log(planes)
       setPlanes(planes);
     } catch (err) {
@@ -27,13 +40,10 @@ function App() {
 
   return (
     <div className='h-screen bg-slate-800 text-center text-slate-200 p-8'>
-      {!planes && !error && isGeolocationEnabled && (
+      {!planes && !error && (
         <button className = 'btn text-3xl py-2 px-4 rounded-md bg-slate-500 p-8' onClick={() => queryBackend()}>
           What's overhead? 
         </button>
-      )}
-      {!isGeolocationEnabled && (
-        <p>Geolocation not available</p>
       )}
       {planes && (
         <div className='grid place-items-center px-5'>
@@ -51,7 +61,7 @@ function App() {
             {planes.map((plane) =>
               <tr key = { plane.icao24 } className='text-lg'> 
                 <td className='pl-3'>{ plane.callsign }</td>
-                <td className='pr-3 text-right'>{ `${Math.round(plane.geo_altitude)} m/s`} </td>
+                <td className='pr-3 text-right'>{ `${Math.round(plane.geo_altitude)} m`} </td>
                 <td className='pr-3 text-right'>{ `${Math.round(plane.velocity)} m/s`} </td> 
                 <td className='pr-3 text-right'>{`${Math.round(plane.vertical_rate)} m/s`}</td> 
                 <td className='pr-3 text-right'>{ '' + plane.on_ground } </td> 
