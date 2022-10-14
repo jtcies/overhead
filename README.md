@@ -9,7 +9,10 @@ Get list of airplanes in your area
 - API: Opensky
 
 ### Todo
-- [ ] make frontend look nicer
+- [x] make frontend look nicer
+- [ ] fix issue where location not used
+- [ ] style error page
+- [ ] use docker compose
 - [ ] deploy to prod
 - [ ] get information on plane origin, destination
 - [ ] allow user to manipulate query params (altitude, x/y range)
