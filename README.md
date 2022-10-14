@@ -11,7 +11,7 @@ Get list of airplanes in your area
 ### Todo
 - [x] make frontend look nicer
 - [ ] fix issue where location not used
-- [ ] style error page
+- [ ] style error pages
 - [ ] use docker compose
 - [ ] deploy to prod
 - [ ] get information on plane origin, destination
@@ -20,3 +20,4 @@ Get list of airplanes in your area
 - [ ] allow user to save data (planes viewed, etc.)
     - [ ] setup PG database
     - [ ] allow interaction with results
+- [ ] distance to aircraft (based on lat/lon/alt)?

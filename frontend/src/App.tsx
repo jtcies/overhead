@@ -36,29 +36,25 @@ function App() {
         <p>Geolocation not available</p>
       )}
       {planes && (
-        <div className='grid place-items-center'>
-        <table className='table-fixed text-left border border-spacing-5 rounded w-1/2'>
+        <div className='grid place-items-center px-5'>
+        <table className='table-fixed text-left border w-1/2 rounded-md border-spacing-2 border-separate'>
           <thead>
-            <tr className='border border-spacing-8'>
+            <tr className='border border-2 border-separate text-xl'>
               <th className='pl-3'>callsign</th>
-              <th className='pl-3'>altitude</th>
-              <th className='pl-3'>velocity</th>
-              <th className='pl-3'>vertical rate</th>
-              <th className='pl-3'>on ground?</th>
+              <th className='pr-3 text-right'>altitude</th>
+              <th className='pr-3 text-right'>velocity</th>
+              <th className='pr-3 text-right'>vertical rate</th>
+              <th className='pl-3 text-right'>on ground?</th>
             </tr>
           </thead>
           <tbody>
             {planes.map((plane) =>
-              <tr key = { plane.icao24 } > 
+              <tr key = { plane.icao24 } className='text-lg'> 
                 <td className='pl-3'>{ plane.callsign }</td>
-                <td className='pr-3 text-right'>{ plane.geo_altitude && (
-                      Math.round(plane.geo_altitude) + " m"
-                ) }</td>
-                <td className='pr-3 text-right'>{ Math.round(plane.velocity) } m/s</td> 
-                <td className='pr-3 text-right'>{ plane.vertical_rate && (
-                      Math.round(plane.vertical_rate) + " m/s"
-                ) }</td> 
-                <td className='pl-3 text-left'>{ '' + plane.on_ground } </td> 
+                <td className='pr-3 text-right'>{ `${Math.round(plane.geo_altitude)} m/s`} </td>
+                <td className='pr-3 text-right'>{ `${Math.round(plane.velocity)} m/s`} </td> 
+                <td className='pr-3 text-right'>{`${Math.round(plane.vertical_rate)} m/s`}</td> 
+                <td className='pr-3 text-right'>{ '' + plane.on_ground } </td> 
               </tr>
             )}
         </tbody>
