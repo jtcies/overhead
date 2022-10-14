@@ -26,12 +26,9 @@ export const getPlanes = async (lat: number, lon: number): Promise<Array<Plane>>
         lon: lon.toString()
     }).toString()
 
-    const response  = await fetch('http://localhost:8000/?' + Params, {
-        method: 'GET',
+    const data  = await fetch('http://localhost:8000/?' + Params)
+        .then((res) => res.json())
 
-    }
-    );
-    const data = await response.json()
     if (data) {
         return data
     }
