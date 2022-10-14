@@ -10,8 +10,10 @@ Get list of airplanes in your area
 
 ### Todo
 - [x] make frontend look nicer
-- [ ] fix issue where location not used
-- [ ] style error pages
+- [x] fix issue where location not used
+- [ ] better handle when geolocation is loading
+- [ ] sort data
+- [ ] better handling error pages
 - [ ] use docker compose
 - [ ] deploy to prod
 - [ ] get information on plane origin, destination
