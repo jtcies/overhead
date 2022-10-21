@@ -1,5 +1,3 @@
-import { useQuery } from 'react-query'
-
 export type Plane = {
     icao24: string;
     callsign: string;
@@ -21,7 +19,7 @@ export type Plane = {
 }
 
 export const getPlanes = async (lat: number, lon: number): Promise<Array<Plane>> => {
-    if (lat == undefined) {
+    if (lat === undefined) {
         return Promise.reject('Geolocation not available')
     }
     const Params = new URLSearchParams({

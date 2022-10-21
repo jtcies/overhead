@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React, { useState } from 'react';
 import { getPlanes, Plane} from './utils/api';
 import "./styles/global.css";
 
