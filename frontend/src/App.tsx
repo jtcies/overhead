@@ -39,7 +39,7 @@ function App() {
   };
 
   return (
-    <div className='h-screen bg-slate-800 text-center text-slate-200 p-8'>
+    <div className='h-screen bg-slate-800 text-center text-slate-200 p-8 font-body'>
       {!planes && !error && (
         <button className = 'btn text-3xl py-2 px-4 rounded-md bg-slate-500 p-8' onClick={() => queryBackend()}>
           What's overhead? 
