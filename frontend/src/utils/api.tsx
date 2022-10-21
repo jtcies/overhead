@@ -31,6 +31,10 @@ export const getPlanes = async (lat: number, lon: number): Promise<Array<Plane>>
 
     const data  = await fetch('http://localhost:8000/?' + Params)
         .then((res) => res.json())
+        .then((data) => {
+            data.sort((a: Plane, b: Plane) => b.geo_altitude - a.geo_altitude)
+            return data
+        })
 
     if (data) {
         return data
