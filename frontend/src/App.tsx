@@ -18,6 +18,7 @@ function App() {
         setLat(coords.latitude);
         setLong(coords.longitude);
       }, (error) => {
+        console.log(error)
         setError('Something went wrong getting your position!')
       })
     }

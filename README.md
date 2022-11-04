@@ -11,6 +11,10 @@ Get list of airplanes in your area
 ### Todo
 - [x] make frontend look nicer
 - [x] fix issue where location not used
+- [ ] reverse proxy
+- [-] security
+    - [x] https dev
+    - [ ] authentication
 - [ ] better handle when geolocation is loading
     - make the button change colors when location is ready? 
 - [ ] about page
